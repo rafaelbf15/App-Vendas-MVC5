@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AppVendas.Application.ViewModels.EstoqueViewModel>
+
+@{
+    ViewBag.Title = "Loja";
+}
+
+
+<h2>@ViewBag.Title</h2><br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdutoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Produto.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade) unidades disponíveis
+            </td>
+            @*<td>
+                    <a href="@Url.Action("Edit", new { id=item.Id })" class="btn btn-warning" @Html.Raw(this.IfClaimShow("Produtos", "EDITAR"))>Editar</a>
+                    <a href="@Url.Action("Details", new { id=item.Id })" class="btn btn-primary" @Html.Raw(this.IfClaimShow("Produtos", "DETALHES"))>Detalhes</a>
+                    <a href="@Url.Action("Delete", new { id=item.Id })" class="btn btn-danger" @Html.Raw(this.IfClaimShow("Produtos", "EXCLUIR"))> Excluir</a>
+                </td>*@
+            <td>
+                <a href="@Url.Action("Create")" class="btn btn-warning">Comprar</a>
+            </td>
+        </tr>
+    }
+
+</table>

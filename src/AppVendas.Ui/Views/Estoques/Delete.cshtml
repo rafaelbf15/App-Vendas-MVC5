@@ -1,0 +1,47 @@
+﻿@model AppVendas.Application.ViewModels.EstoqueViewModel
+@{
+    ViewBag.Title = "Remover Produto Estoque";
+}
+<h2>@ViewBag.Title</h2>
+<div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                </button>
+                <h3>Você tem certeza que deseja remover este produto?</h3>
+            </div>
+            <div class="modal-body">
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProdutoId)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Produto.Nome)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Quantidade)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Quantidade)
+                    </dd>
+                </dl>
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color">
+                        <input type="submit"  class="btn btn-danger" value="Excluir" />
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Voltar</button>
+                    </div>
+                }
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

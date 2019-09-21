@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AppVendas.Application.ViewModels.VendaViewModel>
+
+@{
+    ViewBag.Title = "Lista Produto Compra";
+}
+
+<h2>@ViewBag.Title</h2><br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdutoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Produto.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Produto.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Produto.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantidade) unidades
+        </td>
+        <td>
+            <a href="@Url.Action("Delete", new { id=item.Id })" class="btn btn-danger"> Excluir</a>
+        </td>
+    </tr>
+    }
+
+</table>

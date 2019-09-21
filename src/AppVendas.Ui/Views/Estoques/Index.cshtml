@@ -1,0 +1,75 @@
+﻿@model IEnumerable<AppVendas.Application.ViewModels.EstoqueViewModel>
+
+@{
+    ViewBag.Title = "Produtos Estoque";
+}
+
+<h2>@ViewBag.Title</h2><br />
+
+<p>
+    @Html.ActionLink("Adicionar Produto", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdutoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+            @*<td>
+                    <a href="@Url.Action("Edit", new { id=item.Id })" class="btn btn-warning" @Html.Raw(this.IfClaimShow("Produtos", "EDITAR"))>Editar</a>
+                    <a href="@Url.Action("Details", new { id=item.Id })" class="btn btn-primary" @Html.Raw(this.IfClaimShow("Produtos", "DETALHES"))>Detalhes</a>
+                    <a href="@Url.Action("Delete", new { id=item.Id })" class="btn btn-danger" @Html.Raw(this.IfClaimShow("Produtos", "EXCLUIR"))> Excluir</a>
+            </td>*@
+            <td>
+
+                <button class="btn btn-primary details" data-id="@item.Id">Detalhes</button>
+                <button class="btn btn-warning edit" data-id="@item.Id">Editar</button>
+                <button class="btn btn-danger delete" data-id="@item.Id">Excluir</button>
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div id="modal" class="modal fade" role="dialog" />
+
+
+@section scripts{
+    <script>
+        $(function () {
+            $(".details").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("/area-administrativa/estoque/" + id + "/detalhes", function () {
+                    $("#modal").modal();
+                })
+            });
+            $(".edit").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("/area-administrativa/estoque/" + id + "/editar", function () {
+                    $("#modal").modal();
+                })
+            });
+            $(".delete").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("/area-administrativa/estoque/" + id + "/excluir", function () {
+                    $("#modal").modal();
+                })
+            });
+        })
+    </script>
+}

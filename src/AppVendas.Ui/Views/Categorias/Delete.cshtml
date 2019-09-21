@@ -1,0 +1,35 @@
+﻿@model AppVendas.Application.ViewModels.CategoriaViewModel
+
+@{
+    ViewBag.Title = "Remover Categoria";
+}
+
+<h2>@ViewBag.Title</h2><br />
+
+<h3>Você tem certeza que deseja remover esta categoria?</h3>
+
+@Html.Partial("ErrorSummary")
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Remover" class="btn btn-danger" />
+            <a href="@Url.Action("Index")" class="btn btn-primary">Voltar</a>
+        </div>
+    }
+</div>

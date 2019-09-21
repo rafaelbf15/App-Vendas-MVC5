@@ -1,0 +1,30 @@
+﻿@model AppVendas.Application.ViewModels.EstoqueViewModel
+
+@{
+    Layout = null;
+    ViewBag.Title = "Detalhes";
+}
+
+<div class="container">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detalhes do produto</h4>
+            </div>
+            <div class="modal-body">
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>@Html.DisplayNameFor(model => model.ProdutoId)</dt>
+                    <dd>@Html.DisplayFor(model => model.Produto.Nome)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.Produto.Descricao)</dt>
+                    <dd>@Html.DisplayFor(model => model.Produto.Descricao)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.Quantidade)</dt>
+                    <dd>@Html.DisplayFor(model => model.Quantidade)</dd>
+                </dl>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

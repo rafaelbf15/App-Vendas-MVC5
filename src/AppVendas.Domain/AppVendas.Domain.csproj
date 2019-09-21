@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FC75061F-D2AA-4972-AD8B-FEB9C16BF1C2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppVendas.Domain</RootNamespace>
+    <AssemblyName>AppVendas.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DomainValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DomainValidation.1.0.0\lib\net453\DomainValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Intefaces\ICategoriaRepository.cs" />
+    <Compile Include="Intefaces\ICategoriaService.cs" />
+    <Compile Include="Intefaces\IEstoqueRepository.cs" />
+    <Compile Include="Intefaces\IEstoqueService.cs" />
+    <Compile Include="Intefaces\IProdutoRepository.cs" />
+    <Compile Include="Intefaces\IProdutoService.cs" />
+    <Compile Include="Intefaces\IRepositoryRead.cs" />
+    <Compile Include="Intefaces\IRepositoryWrite.cs" />
+    <Compile Include="Intefaces\IUnitOfWork.cs" />
+    <Compile Include="Intefaces\IVendaRepository.cs" />
+    <Compile Include="Intefaces\IVendaService.cs" />
+    <Compile Include="Models\Categoria.cs" />
+    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\Estoque.cs" />
+    <Compile Include="Models\Produto.cs" />
+    <Compile Include="Models\Venda.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CategoriaService.cs" />
+    <Compile Include="Services\EstoqueService.cs" />
+    <Compile Include="Services\ProdutoService.cs" />
+    <Compile Include="Services\VendaService.cs" />
+    <Compile Include="Specifications\Categorias\VerificaRemocaoCategoria.cs" />
+    <Compile Include="Specifications\Estoques\ProdutoNaoPodeEstarDuplicado.cs" />
+    <Compile Include="Specifications\VendaEstoque\EstoqueDeveTerQuantidadeProduto.cs" />
+    <Compile Include="Specifications\GenericSpecification.cs" />
+    <Compile Include="Validations\CategoriaConsistenteValidation.cs" />
+    <Compile Include="Validations\Categorias\CategoriaRemocaoOkValidation.cs" />
+    <Compile Include="Validations\EstoqueConsistenteValidation.cs" />
+    <Compile Include="Validations\Estoques\EstoqueCadastroOkVvalidation.cs" />
+    <Compile Include="Validations\ProdutoConsistenteValidation.cs" />
+    <Compile Include="Validations\VendaConsistenteValidation.cs" />
+    <Compile Include="Validations\VendaEstoque\VendaCadastroOkValidation.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
